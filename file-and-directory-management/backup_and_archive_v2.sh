@@ -30,16 +30,22 @@ backup_source() {
     fi
 
     DEST="${BACKUP_DIR}/${BASENAME}${BACKUP_SUFFIX}"
-    echo "Performing $BACKUP_TYPE backup for $SOURCE to $DEST" >> "$LOG_FILE"
+    
+    # Create a separate log file for each backup process
+    LOG_FILE_PROCESS="${BACKUP_DIR}/backup_${BASENAME}_${TIMESTAMP}.log"
+    echo "Performing $BACKUP_TYPE backup for $SOURCE to $DEST" > "$LOG_FILE_PROCESS"
 
     # Perform backup
-    tar --listed-incremental="$SNAPSHOT_FILE" -czf "$DEST" "$SOURCE" 2>> "$LOG_FILE"
+    tar --listed-incremental="$SNAPSHOT_FILE" -czf "$DEST" "$SOURCE" 2>> "$LOG_FILE_PROCESS"
 
     if [ $? -eq 0 ]; then
-        echo "$BACKUP_TYPE backup of $SOURCE successful" >> "$LOG_FILE"
+        echo "$BACKUP_TYPE backup of $SOURCE successful" >> "$LOG_FILE_PROCESS"
     else
-        echo "Error: $BACKUP_TYPE backup of $SOURCE failed" >> "$LOG_FILE"
+        echo "Error: $BACKUP_TYPE backup of $SOURCE failed" >> "$LOG_FILE_PROCESS"
     fi
+
+    # Append each backup log to the main log
+    cat "$LOG_FILE_PROCESS" >> "$LOG_FILE"
 }
 
 # Backup each source in parallel
