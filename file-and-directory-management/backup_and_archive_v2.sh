@@ -43,9 +43,7 @@ backup_source() {
     else
         echo "Error: $BACKUP_TYPE backup of $SOURCE failed" >> "$LOG_FILE_PROCESS"
     fi
-
-    # Append each backup log to the main log
-    cat "$LOG_FILE_PROCESS" >> "$LOG_FILE"
+    
 }
 
 # Backup each source in parallel
