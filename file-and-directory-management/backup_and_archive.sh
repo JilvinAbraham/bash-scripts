@@ -4,7 +4,7 @@
 SOURCE_PATHS=("/path/to/source1" "/path/to/source2")  # Paths to backup
 BACKUP_DIR="/path/to/backup"  # Backup destination
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")  # Current date and time
-LOG_FILE="${BACKUP_DIR}/backup_log_${TIMESTAMP}.log"
+LOG_FILE="${BACKUP_DIR}/backup_log_${TIMESTAMP}.log" # Contains all the details about the backup processing
 
 # Create the backup directory if it doesn't exist
 mkdir -p "$BACKUP_DIR"
