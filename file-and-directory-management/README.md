@@ -1,4 +1,4 @@
-While the v1 of script is functional and serves as a good starting point, it does have some drawbacks and limitations. Here's a list of potential issues:
+While the version 1 of script is functional and serves as a good starting point, it does have some drawbacks and limitations. Here's a list of potential issues:
 
 ### **1. Lack of Incremental Backups**
 - **Issue**: The script always creates a full backup, which can be time-consuming and storage-intensive for large directories or files.
@@ -52,19 +52,9 @@ While the v1 of script is functional and serves as a good starting point, it doe
 - **Improvement**: Use parallel processing with tools like `xargs` or `parallel`.
 
 
-### **11. No Cross-Platform Compatibility**
-- **Issue**: The script is designed for Linux-based systems and may not work as intended on other platforms (e.g., macOS or Windows with WSL).
-- **Improvement**: Test and adapt the script for cross-platform compatibility.
-
-
 ### **12. Lack of User Interaction**
 - **Issue**: The script runs without any user prompts or options, which might lead to unintentional overwrites or operations.
 - **Improvement**: Add interactive prompts or command-line flags for greater control (e.g., `--compress`, `--encrypt`, `--dry-run`).
-
-
-### **13. Limited Scalability**
-- **Issue**: The script doesn’t scale well for enterprise use cases, like backing up multiple servers or integrating with cloud storage.
-- **Improvement**: Extend the script to support remote backups (e.g., via SCP or rsync) or cloud storage services (e.g., AWS S3, Google Cloud).
 
 
 ### **14. Potential for Race Conditions**
